@@ -1,0 +1,12 @@
+input: input/samplesheet/samplesheet.csv
+outdir: output
+aligner: star_salmon
+save_align_intermeds: false
+save_unaligned: true
+remove_ribo_rna: true
+save_non_ribo_reads: false
+save_trimmed:  false
+save_reference: false
+gtf: resources/Homo_sapiens.GRCh38.110.gtf
+fasta: resources/Homo_sapiens.GRCh38.dna_sm.primary_assembly.fa
+email: gibbsa@cardiff.ac.uk
