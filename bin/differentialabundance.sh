@@ -14,8 +14,12 @@ awk -F, 'BEGIN {OFS=","}
         print $0, "conditionOne"   # Print header and add new column header
     }
     FNR>1 {
-        match($2, /SRR[0-9]+/)     # Extract the sampleID from fastq_1 column
-        sampleID = substr($2, RSTART, RLENGTH)
+        # Use regex to match any alphanumeric and underscore characters in the fastq_1 column as sampleID
+        if (match($2, /[a-zA-Z0-9_]+/)) {
+            sampleID = substr($2, RSTART, RLENGTH)
+        } else {
+            sampleID = "NA"  # Default to NA if no match is found
+        }
         print $0, (cond[sampleID] ? cond[sampleID] : "NA") # Add conditionOne if sampleID is found, otherwise "NA"
     }' resources/conditions.csv resources/diff-abundance-samplesheet.csv > resources/tmp && mv resources/tmp resources/diff-abundance-samplesheet.csv
 #############
