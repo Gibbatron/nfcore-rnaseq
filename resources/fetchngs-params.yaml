@@ -1,4 +1,4 @@
 input: resources/ids.csv
 outdir: input
 nf_core_pipeline: rnaseq
-email: gibbsa@cardiff.ac.uk
+email: your-email@cardiff.ac.uk
