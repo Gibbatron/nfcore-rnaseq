@@ -212,7 +212,7 @@ enter
 - **If you have run the nf-core/fetchngs pipeline, this file will have been generated for you and is located in ```rnaseq-course/input/samplesheet/```.**
 
 - If you need to generate a samplesheet, you can run the `generate-samplesheet.sh` script in `rnaseq-course/bin/` which will generate one for you.
-- You will need to move your fastq files to the input directory firstly, then run the script from the course directory:
+- **You will need to move your fastq files to the input/fastq directory firstl**, then run the script from the course directory:
 
 ```
 #move to the course directory
