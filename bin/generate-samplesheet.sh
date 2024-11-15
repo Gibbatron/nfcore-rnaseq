@@ -98,20 +98,24 @@ process_fq1_fq2() {
 ########################################################################
 # Check for FASTQ files with the above naming conventions
 if ls "$fastq_dir"/*_R1_001.fastq.gz 1> /dev/null 2>&1; then
-    echo "${YELLOW}Processing files with '_R1_001.fastq.gz' naming convention...${RESET}"
+    echo -e "${YELLOW}Processing files with '_R1_001.fastq.gz' naming convention...${RESET}"
     process_r1_r2
-elif 
-    ls "$fastq_dir"/*_1.fastq.gz 1> /dev/null 2>&1; then
-    echo "${YELLOW}Processing files with '_1.fastq.gz' naming convention...${RESET}"
-    process_1_2
-elif 
-    ls "$fastq_dir"/*_1.fq.gz 1> /dev/null 2>&1; then
-    echo "${YELLOW}Processing files with '_1.fq.gz' naming convention...${RESET}"
-    process_fq1_fq2
-else 
-    echo "${RED}No compatible FASTQ files found in $fastq_dir${RESET}"
 fi
 
-echo "${GREEN}CSV file created: $output_csv"${RESET}}
+if ls "$fastq_dir"/*_1.fastq.gz 1> /dev/null 2>&1; then
+    echo -e "${YELLOW}Processing files with '_1.fastq.gz' naming convention...${RESET}"
+    process_1_2
+fi
+
+if ls "$fastq_dir"/*_1.fq.gz 1> /dev/null 2>&1; then
+    echo -e "${YELLOW}Processing files with '_1.fq.gz' naming convention...${RESET}"
+    process_fq1_fq2
+fi
+
+if [[ ! -s "$output_csv" ]]; then
+    echo -e "${RED}No compatible FASTQ files found in $fastq_dir${RESET}"
+else
+    echo -e "${GREEN}CSV file created: $output_csv${RESET}"
+fi
 ########################################################################
 ########################################################################
