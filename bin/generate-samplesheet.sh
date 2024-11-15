@@ -112,7 +112,8 @@ if ls "$fastq_dir"/*_1.fq.gz 1> /dev/null 2>&1; then
     process_fq1_fq2
 fi
 
-if [[ ! -s "$output_csv" ]]; then
+# Check if any rows (beyond the header) were added to the CSV file
+if [[ $(wc -l < "$output_csv") -le 1 ]]; then
     echo -e "${RED}No compatible FASTQ files found in $fastq_dir${RESET}"
 else
     echo -e "${GREEN}CSV file created: $output_csv${RESET}"
