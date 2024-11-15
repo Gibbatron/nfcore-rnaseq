@@ -20,7 +20,7 @@ mkdir -p  "$output_dir"
 echo "sample,fastq_1,fastq_2,strandedness" > $output_csv
 
 # Define the base directory where the FASTQ files are located
-fastq_dir="$myDir"../input/
+fastq_dir="$myDir"/input/fastq
 
 ########################################################################
 ########################################################################
