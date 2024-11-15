@@ -38,7 +38,7 @@ process_r1_r2() {
             # Append the row to the CSV file
             echo "${sample},${fastq_1},${fastq_2},auto" >> $output_csv
         else
-            echo "${YELLOW}Warning: Paired file for ${fastq_1} not found!${RESET}"
+            echo -e "${YELLOW}Warning: Paired file for ${fastq_1} not found!${RESET}"
         fi
     done
 }
@@ -62,7 +62,7 @@ process_1_2() {
             # Append the row to the CSV file
             echo "${sample},${fastq_1},${fastq_2},auto" >> $output_csv
         else
-            echo "${YELLOW}Warning: Paired file for ${fastq_1} not found!${RESET}"
+            echo -e "${YELLOW}Warning: Paired file for ${fastq_1} not found!${RESET}"
         fi
     done
 }
@@ -86,7 +86,7 @@ process_fq1_fq2() {
             # Append the row to the CSV file
             echo "${sample},${fastq_1},${fastq_2},auto" >> $output_csv
         else
-            echo "${YELLOW}Warning: Paired file for ${fastq_1} not found!${RESET}"
+            echo -e "${YELLOW}Warning: Paired file for ${fastq_1} not found!${RESET}"
         fi
     done
 }
