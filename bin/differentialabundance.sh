@@ -1,8 +1,8 @@
 #!/bin/bash
 
 #############
-#create custom samplesheet for differential abundance pipeline
-#take first 4 columns from the samplesheet.csv from fetchngs pipeline
+# create custom samplesheet for differential abundance pipeline
+# take first 4 columns from the samplesheet.csv from fetchngs pipeline
 awk -F, 'BEGIN {OFS=","} {print $1, $2, $3, $4}' input/samplesheet/samplesheet.csv > resources/diff-abundance-samplesheet.csv
 
 #merge conditions.csv with fastq_1 column in diff-abundance-samplesheet.csv
@@ -25,6 +25,11 @@ awk -F, 'BEGIN {OFS=","}
 #############
 
 #############
-#run differentialabundance pipeline
+# run differentialabundance pipeline
 nextflow run nf-core/differentialabundance -params-file resources/diff-abundance-params.yaml -profile singularity -c resources/my.config
+#############
+
+#############
+# merge the resulting data tables
+./make-table-diff-abundance.sh
 #############
