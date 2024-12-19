@@ -11,11 +11,17 @@ RESET="\033[0m"
 # Define file paths
 NORMALISED_COUNTS="output/tables/processed_abundance/all.normalised_counts.tsv"
 VST_COUNTS="output/tables/processed_abundance/all.vst.tsv"
-ANNOTATION="output/tables/annotation/Mus_musculus.anno.tsv"
 OUTPUT_FILE="output/tables/merged_table.tsv"
 
+# Dynamically locate the annotation file
+ANNOTATION=$(ls output/tables/annotation/*.anno.tsv 2>/dev/null)
+if [ -z "$ANNOTATION" ]; then
+    echo -e "${RED}Error: No file ending with 'anno.tsv' found in the 'output/tables/annotation' directory. Your nf-core/differentialabundance pipeline may not had run correctly.${RESET}"
+    exit 1
+fi
+
 # Dynamically locate the DEGS file
-DEGS=$(ls differential/*.deseq2.results.tsv 2>/dev/null)
+DEGS=$(ls output/tables/differential/*.deseq2.results.tsv 2>/dev/null)
 if [ -z "$DEGS" ]; then
     echo -e "${RED}Error: No file ending with 'deseq2.results.tsv' found in the 'output/tables/differential' directory. Your nf-core/differentialabundance pipeline may not had run correctly.${RESET}"
     exit 1
