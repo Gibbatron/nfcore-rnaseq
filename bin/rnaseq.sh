@@ -15,5 +15,5 @@ cd ../
 
 #############
 #run rnaseq pipeline
-nextflow run nf-core/rnaseq -profile singularity -c resources/my.config -params-file resources/rnaseq-params.yaml
+nextflow run nf-core/rnaseq -r 3.16.0 -profile singularity -c resources/my.config -params-file resources/rnaseq-params.yaml
 #############
