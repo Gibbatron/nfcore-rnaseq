@@ -42,7 +42,7 @@ echo -e "${GREEN}Differential abundance pipeline completed.${RESET}"
 #############
 # merge the resulting data tables
 echo -e "${YELLOW}Merging output tables${RESET}"
-./make-table-diff-abundance.sh
+.bin/make-table-diff-abundance.sh
 echo -e "${GREEN}Tables merged.${RESET}"
 #############
 
@@ -51,11 +51,11 @@ echo -e "${GREEN}Tables merged.${RESET}"
 echo -e "${YELLOW}Removing duplicate genes from table${RESET}"
 
 # Input table file
-input_file="merged_table.tsv"
+input_file="output/tables/merged_table.tsv"
 
 # Output files
-unique_file="merged_table_unique.tsv"
-duplicates_file="duplicate_gene_names.tsv"
+unique_file="output/tables/merged_table_unique.tsv"
+duplicates_file="output/tables/duplicate_gene_names.tsv"
 
 # Extract the two header rows
 head -n 2 "$input_file" > "$unique_file"
