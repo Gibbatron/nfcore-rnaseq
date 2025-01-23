@@ -6,6 +6,6 @@ transcript_length_matrix: output/star_salmon/salmon.merged.gene_lengths.tsv
 contrasts: resources/contrasts.csv
 differential_min_fold_change: 1.5
 gtf: resources/Homo_sapiens.GRCh38.110.gtf
-email: gibbsa@cardiff.ac.uk
+email: your-email@cardiff.ac.uk
 study_name: NAME-YOUR-PROJECT
 study_type: rnaseq
