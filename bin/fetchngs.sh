@@ -8,7 +8,7 @@ RESET="\033[0m"
 
 #############
 # run fetchngs pipeline
-nextflow run nf-core/fetchngs -r 1.10.0 -profile singularity -c resources/my.config -params-file resources/fetchngs-params.yaml
+nextflow run nf-core/fetchngs -r dev -profile singularity -c resources/my.config -params-file resources/fetchngs-params.yaml
 #############
 
 
