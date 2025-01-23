@@ -11,9 +11,10 @@ RESET="\033[0m"
 # take first 4 columns from the samplesheet.csv from fetchngs pipeline
 echo -e "${YELLOW}Creating custom samplesheet${RESET}"
 
-awk -F, 'BEGIN {OFS=","} {print $1, $2, $3, $4}' input/samplesheet/samplesheet.csv > resources/diff-abundance-samplesheet.csv
+# Step 1: Extract the necessary columns from samplesheet.csv (using the "sample" column) and remove double quotes from the variables ("")
+awk -F, 'BEGIN {OFS=","} {gsub(/"/, ""); print $1, $2, $3, $4}' input/samplesheet/samplesheet.csv > resources/diff-abundance-samplesheet.csv
 
-#merge conditions.csv with fastq_1 column in diff-abundance-samplesheet.csv
+# Step 2: Merge conditions.csv with the sample column in diff-abundance-samplesheet.csv
 awk -F, 'BEGIN {OFS=","}
     NR==FNR {
         cond[$1] = $2; next   # Store conditionOne from conditions.csv in an array indexed by sampleID
@@ -22,13 +23,10 @@ awk -F, 'BEGIN {OFS=","}
         print $0, "conditionOne"   # Print header and add new column header
     }
     FNR>1 {
-        # Use regex to match any alphanumeric and underscore characters in the fastq_1 column as sampleID
-        if (match($2, /[a-zA-Z0-9_]+/)) {
-            sampleID = substr($2, RSTART, RLENGTH)
-        } else {
-            sampleID = "NA"  # Default to NA if no match is found
-        }
-        print $0, (cond[sampleID] ? cond[sampleID] : "NA") # Add conditionOne if sampleID is found, otherwise "NA"
+        sampleID = $1  # Extract sampleID directly from the "sample" column (first column)
+
+        # If sampleID is found in conditions.csv, add its condition, else set to "NA"
+        print $0, (cond[sampleID] ? cond[sampleID] : "NA")
     }' resources/conditions.csv resources/diff-abundance-samplesheet.csv > resources/tmp && mv resources/tmp resources/diff-abundance-samplesheet.csv
 
 echo -e "${GREEN}Custom samplesheet created.${RESET}"
