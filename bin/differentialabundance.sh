@@ -42,7 +42,7 @@ echo -e "${GREEN}Differential abundance pipeline completed.${RESET}"
 #############
 # merge the resulting data tables
 echo -e "${YELLOW}Merging output tables${RESET}"
-.bin/make-table-diff-abundance.sh
+./bin/make-table-diff-abundance.sh
 echo -e "${GREEN}Tables merged.${RESET}"
 #############
 
