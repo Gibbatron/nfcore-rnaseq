@@ -8,7 +8,7 @@ Repo for nf-core/fetchngs/rnaseq/differentialabundance pipelines to run on Cardi
 
 ```
 cd /scratch/c.c1234567
-git clone https://github.com/Gibbatron/rnaseq-course.git
+git clone https://github.com/Gibbatron/nfcore-rnaseq.git
 ```
 
 ---
@@ -23,9 +23,9 @@ Before running the pipelines, you first need to make custom changes:
 - In your scratch directory, input the following command:
 
 ```
-chmod -R 777 rnaseq-course
+chmod -R 777 nfcore-rnaseq
 
-setfacl -d -m u::rwx,g::rwx,o::rwx rnaseq-course
+setfacl -d -m u::rwx,g::rwx,o::rwx nfcore-rnaseq
 ```
 
 - chmod -R 777 recursively gives the directory and its contents read, write, and execute permissions for everyone
@@ -38,7 +38,7 @@ setfacl -d -m u::rwx,g::rwx,o::rwx rnaseq-course
 - We can now move into the course directory and modify the permissions of the scripts.
 
 ```
-cd rnaseq-course
+cd nfcore-rnaseq
 chmod +x bin/*.sh
 ```
 ---
@@ -127,7 +127,7 @@ enter
 
 ```
 #move to course directory (if not already there)
-cd rnaseq-course
+cd nfcore-rnaseq
 
 #load tmux module
 module load tmux
@@ -168,7 +168,7 @@ Things to change:
 - To change these parameters, open the file in the nano editor, make your changes, then save:
 
 ```
-nano rnaseq-course/resources/my.config
+nano nfcore-rnaseq/resources/my.config
 
 #make the required changes
 
@@ -195,7 +195,7 @@ Things to change:
 - To make the changes, use the nano editor, make changes, and save:
 
 ```
-nano rnaseq-course/resources/rnaseq-params.yaml
+nano nfcore-rnaseq/resources/rnaseq-params.yaml
 
 #make the required changes
 
@@ -216,7 +216,7 @@ enter
 
 ```
 #move to the course directory
-cd rnaseq-course
+cd nfcore-rnaseq
 
 #run the generate-samplesheet.sh script
 ./bin/generate-samplesheet.sh
@@ -241,7 +241,7 @@ cd rnaseq-course
 
 ```
 #move to course directory (if not already there)
-cd rnaseq-course
+cd nfcore-rnaseq
 
 #load tmux module
 module load tmux
@@ -282,7 +282,7 @@ Things to change:
 - To change these parameters, open the file in the nano editor, make your changes, then save:
 
 ```
-nano rnaseq-course/resources/my.config
+nano nfcore-rnaseq/resources/my.config
 
 #make the required changes
 
@@ -312,7 +312,7 @@ Things to change:
 - To make the changes, use the nano editor, make changes, and save:
 
 ```
-nano rnaseq-course/resources/diff-abundance-params.yaml
+nano nfcore-rnaseq/resources/diff-abundance-params.yaml
 
 #make the required changes
 
@@ -335,7 +335,7 @@ enter
 
 ```
 #move to course directory
-cd rnaseq-course
+cd nfcore-rnaseq
 
 #execute script
 ./bin/download-ref-genome.sh
@@ -353,7 +353,7 @@ cd rnaseq-course
 
 ```
 #move to course directory (if not already there)
-cd rnaseq-course
+cd nfcore-rnaseq
 
 #execute the generate-samplesheet.sh script
 ./bin/generate-samplesheet.sh
@@ -421,7 +421,7 @@ enter
 
 ```
 #move to course directory (if not already there)
-cd rnaseq-course
+cd nfcore-rnaseq
 
 #load tmux module
 module load tmux
