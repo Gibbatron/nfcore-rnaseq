@@ -1,7 +1,7 @@
 sampleID,conditionOne
-SRX19363186,HK-2
-SRX19363187,HK-2
-SRX19363188,HK-2
-SRX19363192,786-0
-SRX19363193,786-0
-SRX19363194,786-0
+Sample-1,Control
+Sample-2,Control
+Sample-3,Control
+Sample-4,Target
+Sample-5,Target
+Sample-6,Target
